@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Unified Tactile Representation for Robot Learning">
+  <meta name="keywords" content="Representation Learning, Tactile Sensing, Imitation Learning">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>UniT: Unified Tactile Representation for Robot Learning</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">UniT: Unified Tactile Representation for Robot Learning</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://www.linkedin.com/in/zhengtong-xu-4287b8174/">Zhengtong Xu</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.raghavauppuluri.dev/">Raghava Uppuluri</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="">Xinwei Zhang</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Cael Fitch</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://food-science.uark.edu/people/faculty/uid/crandal/name/Philip+G.+Crandall/">Philip Glen Crandall</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://showone90.wixsite.com/show">Wan Shou</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="https://sfelab.uark.edu/">Dongyi Wang</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+                <a href="https://www.purduemars.com/">Yu She</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Purdue University,</span>
+            <span class="author-block"><sup>2</sup>University of Arkansas</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Video Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              <!-- Dataset Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-centered">
+          <img id="teaser" src="./static/images/first_page.png" alt="First Page Image" width="100%">
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            UniT is a novel approach to tactile representation learning, which uses VQVAE to learn a compact latent space and serve as the tactile representation. 
+            It uses tactile images obtained from a single simple object to train the representation with transferability and generalizability. 
+            This tactile representation can be zero-shot transferred to various downstream tasks, including perception tasks and manipulation policy learning. 
+            Our benchmarking on a in-hand 3D pose estimation task shows that UniT outperforms existing visual and tactile representation learning methods. 
+            Additionally, UniT's effectiveness in policy learning is demonstrated across three real-world tasks involving diverse manipulated objects and complex robot-object-environment interactions. 
+            Through extensive experimentation, UniT is shown to be a simple-to-train, plug-and-play, yet widely effective method for tactile representation learning. 
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Transferability and Generalizability</h2>
+        <h3 class="title is-4">Train on a Single Simple Object</h3>
+        <div class="content has-text-justified">
+          <p>
+            Tactile images obtained from a single simple object such as an Allen key or a small ball can train a representation with robust transferability and generalizability using UniT.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="RepresentationData" autoplay controls muted loop playsinline width="75%">
+            <source src="./static/videos/RepresentationData.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h3 class="title is-4"></h3>
+        <div class="content has-text-justified">
+          <p>
+            Although UniT was trained only on a single simple object, the tactile representation it learns can effectively generalize to unseen objects with diverse shapes, sizes, and textures. 
+            This tactile representation can reconstruct images that preserve most of the critical information of the original image, such as contact geometry and configuration.
+            Compared to UniT, masked autoencoder (MAE) performs less ideal.
+          </p>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-4">Autoencoders Trained on Allen Key</h2>
+          <video id="AllenKey" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/AllenKey.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="column">
+        <h2 class="title is-4">Autoencoders Trained with on Small Ball</h2>
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="content">
+              <video id="SmallBall" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/SmallBall.mp4"
+                      type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column">
+        <div class="content">
+          <h2 class="title is-4">Generalize to Multiple Sensors</h2>
+          <p>
+            Moreover, we demonstrate that tactile representations learned using UniT can effectively generalize across different sensors, 
+            despite the training data originating from a single sensor.
+          </p>
+          <video id="MultiSensors" autoplay controls muted loop playsinline height="100%">
+            <source src="./static/videos/MultiSensors.mp4"
+            type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="column">
+        <h2 class="title is-4">Dynamic Marker Motion Reconstruction</h2>
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="content">
+              <p>
+                Both UniT and MAE effectively capture the dynamic motion of markers. 
+                This capability is essential for applying these tactile representations in robot manipulation tasks with complex force interactions.
+              </p>
+              <video id="MarkerTracking" autoplay controls muted loop playsinline height="100%">
+              <source src="./static/videos/MarkerTracking.mp4"
+                      type="video/mp4">
+              </video>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">In-hand 3D Pose Estimation Experiment</h2>
+        <h3 class="title is-4"></h3>
+        <div class="content has-text-justified">
+          <p>
+            We show the effectiveness of UniT on a USB plug 3D pose estimation task, where UniT outperforms training ResNet from scratch, along with existing representation learning methods BYOL and MAE, 
+            and the state-of-the-art tactile representation framework, T3. The data collection process is depicted in the video. For more details of this experiment. please refer to our paper.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="3DPoseDataCollection" autoplay controls muted loop playsinline width="75%">
+            <source src="./static/videos/3DPoseDataCollection.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Policy Learning Experiments</h2>
+        <h3 class="title is-4"></h3>
+        <div class="content has-text-justified">
+          <p>
+            Tactile information provides rich feedback for manipulation tasks involving extensive robot-environment-object interactions and can enhance the performance of manipulation. 
+            We demonstrate the effectiveness of UniT in tactile-involved policy learning through experiments across multiple tasks.
+          </p>
+          <p>
+            We use diffusion policy as the policy backbone and integrate UniT into it. We benchmark this with vision-only diffusion policy and visual-tactile diffusion policy with tactile encoders trained from scratch. 
+            We completed three tasks: Allen key insertion, chicken legs hanging, and chips grasping.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-12">
+        <h2 class="title is-3">Chicken Legs Hanging</h2>
+        <h3 class="title is-4"></h3>
+        <div class="content has-text-justified">
+          <p>
+            The precision required for this task is very high, because the width of the chicken legs and the opening of the slots are almost a perfect match. 
+            Moreover, this task involves rich force interactions with the objects being manipulated: 
+            the left arm applies force on the rack and stabilizes it, while the right arm exerts pressure to insert the chicken leg into the slot on the rack.
+          </p>
+        </div>
+        <h3 class="title is-4">Time Reactiveness of Visual-Tactile Policy with UniT</h3>
+        <div class="content has-text-centered">
+          <video id="ChickenLegsHangingUniT" autoplay controls muted loop playsinline width="75%">
+            <source src="./static/videos/ChickenLegsHangingUniT.mp4" type="video/mp4">
+          </video>
+        </div>
+        <h3 class="title is-4">Visualizations of Visual-Tactile Policy with UniT</h3>
+        <div class="content has-text-centered">
+          <video id="ChickenLegsHangingUniTVis" autoplay controls muted loop playsinline width="75%">
+            <source src="./static/videos/ChickenLegsHangingUniTVis.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-12">
+        <h3 class="title is-4">Overfitting issue of Visual-Tactile Policy Trained from Scratch</h3>
+        <div class="content has-text-justified">
+          <p>
+            Training a visual-tactile policy from scratch for this task tends to overfit on joint states, evident when the right arm moves toward the rack without grasping the chicken leg. 
+            This issue likely arises from the high variance in tactile images caused by the surface texture of the artificial chicken leg. 
+            Consequently, incorporating the tactile modality with tactile encoders trained from scratch may degrade the performance of the policy.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="VisualTactileLegs" autoplay controls muted loop playsinline width="75%">
+            <source src="./static/videos/VisualTactileLegs.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-12">
+        <h3 class="title is-4">Typical Failure Scenarios of Vision-Only Policy</h3>
+        <div class="content has-text-justified">
+          <p>
+            For visual-only policy, its ability to capture interaction information is compromised. 
+            As a result, the policy's performance is affected; often, it appears that the chicken leg has been roughly inserted into the slot, 
+            but due to a lack of interaction information, the gripper is released too early, causing the chicken leg to ultimately fall out.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="VisionOnlyLegs" autoplay controls muted loop playsinline width="75%">
+            <source src="./static/videos/VisionOnlyLegs.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Chips Grasping</h2>
+        <div class="content has-text-justified">
+          <p>
+            The challenge of this task lies in the fragility of the chips, which necessitates precise control over the gripper width. 
+            The gripper must adjust accurately to accommodate the shape and size of the chips. Inadequate adjustment may lead to either missing the grasp or crushing the chips.
+            Real-time tactile feedback is crucial for this task. Vision-tactile policy with UniT can handle chips with different shapes and sizes robustly.
+          </p>
+        </div>
+        <h3 class="title is-4">Continuous Rollout of Vision-Tactile Policy with UniT</h3>
+        <div class="content has-text-centered">
+          <video id="ChipsGraspingUniT" autoplay controls muted loop playsinline width="75%">
+            <source src="./static/videos/ChipsGraspingUniT.mp4" type="video/mp4">
+          </video>
+        </div>
+        <h3 class="title is-4">Visualizations of Vision-Tactile Policy with UniT</h3>
+        <div class="content has-text-centered">
+          <video id="ChipsGraspingUniTVis" autoplay controls muted loop playsinline width="75%">
+            <source src="./static/videos/ChipsGraspingUniTVis.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3"></h2>
+        <h3 class="title is-4">Typical Failure Scenarios of Vision-Only Policy</h3>
+        <div class="content has-text-justified">
+          <p>
+            Relying solely on visual feedback makes it difficult to accurately determine the state of the grasp, which 
+            easily lead to missing the grasp or breaking the chips.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video id="VisionOnlyChips" autoplay controls muted loop playsinline width="75%">
+            <source src="./static/videos/VisionOnlyChips.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Allen Key Insertion</h2>
+        <h3 class="title is-4"></h3>
+        <div class="content has-text-justified">
+          <p>
+            We collected data for two different types of racks in the training set. 
+            During policy rollout, we tested three different types of rack, including a rack that was completely unseen in the training set, representing out-of-distribution data.
+            The measurements 65/70 mm, 35/70 mm, and 50/70 mm refer to the respective heights of the left and right brackets of the rack. 
+            Different combinations of these heights result in variations in the in-hand pose of the Allen key when it is grasped by the gripper.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <figure class="image">
+            <img src="./static/images/setup_key.png" alt="datacollection">
+          </figure>
+        </div>
+        <div class="content has-text-justified">
+          <p>
+            Differences in the in-hand angle can be captured by the tactile image. 
+            Videos below demonstrate that the visual-tactile policy with UniT adapts effectively to racks of various sizes. 
+            Moreover, during insertion, aligning the Allen key with the nut on the first attempt is often challenging and frequently results in slight deviations. 
+            In such cases, tactile feedback aids in interactively adjusting the policy to accurately guide the Allen key into the nut.
+          </p>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-one-third">
+            <h3 class="title is-4">65/70 mm Autonomous Rollout</h3>
+            <video autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/UniTSeen1.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="column is-one-third">
+            <h3 class="title is-4">35/70 mm Autonomous Rollout</h3>
+            <video autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/UniTSeen2.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+          <div class="column is-one-third">
+            <h3 class="title is-4">50/70 mm Autonomous Rollout</h3>
+            <video autoplay controls muted loop playsinline width="100%">
+              <source src="./static/videos/UniTUnseen.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+        </div>
+        <h3 class="title is-4">50/70 mm Continuous Rollout</h3>
+        <div class="content has-text-justified">
+          <p>
+            Here, we also present a video featuring multiple rollouts to demonstrate the effectiveness of the policy with UniT in this task.
+            The purple rack shown in the video is the unseen one.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video autoplay controls muted loop playsinline width="75%">
+            <source src="./static/videos/AllenKeyUniTUnseen.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+        <h3 class="title is-4">Typical Failure Scenarios of Vision-Only Policy and Visual-Tactile Policy from Scratch</h3>
+        <div class="content has-text-justified">
+          <p>
+            For both the vision-only policy and the visual-tactile policy from scratch, missed insertions often occur due to the robot's end effector not being adjusted to the correct orientation. 
+            This issue is more pronounced with the vision-only policy, where there is a noticeable angular deviation of the Allen key during insertion.
+          </p>
+        </div>
+        <div class="content has-text-centered">
+          <video autoplay controls muted loop playsinline width="75%">
+            <source src="./static/videos/KeyBenchmark.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Work</h2>
+        <div class="content has-text-justified">
+          <p>
+              In our previous work <a href="https://arxiv.org/pdf/2403.04934">LeTac-MPC</a>, we introduce a reactive grasping policy that can generalize to objects with diverse stiffness, shapes, and surface textures by learning a physics-informed tactile representation on simple objects.
+          </p>
+          <p>
+              LeTac-MPC demonstrates robust generalizability similar to UniT: it is trained on simple objects yet effectively adaptable to a broader range of scenarios.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="https://github.com/ZhengtongXu" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license"
+                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            The template of this website is adapted from <a
+              href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
