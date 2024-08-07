@@ -1,7 +1,4 @@
-# Nerfies
-
-This is the repository that contains source code for the [Nerfies website](https://unifiedtactile.github.io).
-
+# UniT
 
 The template of this website is adapted from https://github.com/nerfies/nerfies.github.io
 
