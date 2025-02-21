@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="description"
-        content="Unified Tactile Representation for Robot Learning">
+        content="Data Efficient Tactile Representation with Generalization to Unseen Objects">
   <meta name="keywords" content="Representation Learning, Tactile Sensing, Imitation Learning">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>UniT: Unified Tactile Representation for Robot Learning</title>
+  <title>UniT: Data Efficient Tactile Representation with Generalization to Unseen Objects</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
@@ -48,7 +48,7 @@
     <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <h1 class="title is-1 publication-title">UniT: Unified Tactile Representation for Robot Learning</h1>
+          <h1 class="title is-1 publication-title">UniT: Data Efficient Tactile Representation with Generalization to Unseen Objects</h1>
           <div class="is-size-5 publication-authors">
             <span class="author-block">
               <a href="https://zhengtongxu.github.io/website/">Zhengtong Xu</a><sup>1</sup>,</span>
@@ -145,12 +145,7 @@
         </div>
         <div class="content has-text-justified">
           <p>
-            UniT is a novel approach to tactile representation learning, which uses VQVAE to learn a compact latent space and serve as the tactile representation. 
-            It uses tactile images obtained from a single simple object to train the representation with transferability and generalizability. 
-            This tactile representation can be zero-shot transferred to various downstream tasks, including perception tasks and manipulation policy learning. 
-            Our benchmarking on a in-hand 3D pose estimation task shows that UniT outperforms existing visual and tactile representation learning methods. 
-            Additionally, UniT's effectiveness in policy learning is demonstrated across three real-world tasks involving diverse manipulated objects and complex robot-object-environment interactions. 
-            Through extensive experimentation, UniT is shown to be a simple-to-train, plug-and-play, yet widely effective method for tactile representation learning. 
+            UniT is an approach to tactile representation learning, using VQGAN to learn a compact latent space and serve as the tactile representation. It uses tactile images obtained from a single simple object to train the representation with generalizability. This tactile representation can be zero-shot transferred to various downstream tasks, including perception tasks and manipulation policy learning. Our benchmarkings on in-hand 3D pose and 6D pose estimation tasks and a tactile classification task show that UniT outperforms existing visual and tactile representation learning methods. Additionally, UniT's effectiveness in policy learning is demonstrated across three real-world tasks involving diverse manipulated objects and complex robot-object-environment interactions.
           </p>
         </div>
       </div>
@@ -479,6 +474,29 @@
           <video autoplay controls muted loop playsinline width="75%">
             <source src="./static/videos/KeyBenchmark.mp4" type="video/mp4">
             Your browser does not support the video tag.
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Simulated Peg Insertion</h2>
+        <div class="content has-text-justified">
+          <p>
+            we leveraged <a href="https://iakinola23.github.io/tacsl/">TacSL</a> and constructed a simulation environment for a peg insertion imitation learning task.
+            Using this setup, we benchmarked our method against baselines. 
+            Our results show that our method outperforms the policies with T3, in addition to surpassing vision-only policies and visual-tactile policies trained from scratch.
+          </p>
+        </div>
+        <h3 class="title is-4">Rollout of Policy with UniT</h3>
+        <div class="content has-text-centered">
+          <video id="sim_insertion" autoplay controls muted loop playsinline width="75%">
+            <source src="./static/videos/sim_insertion.mp4" type="video/mp4">
           </video>
         </div>
       </div>
